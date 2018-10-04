@@ -1,3 +1,4 @@
+
 # Physical Object Representations
 
 ## Primitive-Based
@@ -5,13 +6,89 @@
 * build up an object by primities, such as lines, points, etc...
 * convex shapes can be made using linear primitives (lines / halfspaces)
 
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+%matplotlib inline
+
+plt.rcParams["figure.figsize"] = 10, 6
+plt.rcParams["figure.dpi"] = 150
+plt.rcParams["text.usetex"] = True
+```
+
+
+```python
+points = np.array([(-1, -1), (-1, 1), (1, 1), (1, -1)])
+
+scale = lambda A, c: A * c
+translate = lambda A, x, y: A + np.array([(x, y)]*4)
+
+
+objects = [
+    translate(scale(points, c), 5 * x, 5 * y)
+    for c, (x, y) in zip(range(1, 5), itertools.product([-1, 1], repeat=2))
+]
+
+for points in objects:
+    for pt in range(4):
+        x1, y1 = points[pt]
+        x2, y2 = points[(pt + 1) % 4]
+        plt.plot([x1, x2], [y1, y2], c="red")
+        plt.scatter([x1], [y1], c="blue")
+    
+plt.title("Obstacles defined by points.")
+```
+
+
+
+
+    Text(0.5,1,'Obstacles defined by points.')
+
+
+
+
+![png](README_files/README_3_1.png)
+
+
+
+```python
+makeline = lambda a, b, c: lambda x: -(a / b) * x + c
+
+objects = [
+    makeline(1, 1, -2),
+    makeline(1, -1, -2),
+    makeline(1, 1, 2),
+    makeline(1, -1, 2),
+]
+
+for line in objects:
+    x = np.linspace(-2, 2, 1000) 
+    y = line(x)
+    valid = np.logical_and.reduce([x > -2, x < 2, y > -2, y < 2])
+    plt.plot(x[valid], y[valid], c="red")
+    
+    
+plt.title("Obstacle defined by lines")
+```
+
+
+
+
+    Text(0.5,1,'Obstacle defined by lines')
+
+
+
+
+![png](README_files/README_4_1.png)
+
+
 ### Convexity
 
-A set $$S$$ is convex if 
-
-$$
-x, y \in S \implies \lambda x + (1 - \lambda) y \in S
-$$
+A set $S$ is convex if for every $x, y \in S$, there exists 
+a point $\lambda x + (1 - \lambda) y \in S$.  In other words, you 
+must be able to move between two points without leaving $S$.
 
 ### Algebraic Sets
 
@@ -47,7 +124,7 @@ a coordinate system.  Two types of transformations possible:
 ## Rigid Body Rotations (2D)
 
 We view this simply as a rotation matrix applied to a vector in
-$$\mathbb{R}^2$$.  For example, a rotation of $$\theta$$ would be
+$\mathbb{R}^2$.  For example, a rotation of $\theta$ would be
 
 $$
 R(\theta) = 
@@ -66,7 +143,7 @@ $$
 \vec{u} = R(\theta)\vec{v} + \vec{t}
 $$
 
-Alternatively, we can use homogenous transformations for convenience like so:
+Alternatively, we can use homogenous transformations for convenience like so:  
 $$
 \left[
     \begin{matrix} 
@@ -74,7 +151,6 @@ $$
         0 & 1 
     \end{matrix}
 \right]
-
 \left[
     \begin{matrix} 
         \vec{v} \\

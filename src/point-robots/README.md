@@ -2,7 +2,7 @@
 
 * robot is a single point
 * constrained environment
-* you know where the obstacles are
+* obstacle locations are known
 
 ## PRM
 

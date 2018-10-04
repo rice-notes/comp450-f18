@@ -1,14 +1,15 @@
 {
     "root": "src",
-    "title": "COMP310: Advanced Object Oriented Programming",
-    "description": "Notes from the Fall 2018 offering of COMP310 at Rice University.",
+    "title": "COMP450: Algorithmic Robotics",
+    "description": "Notes from the Fall 2018 offering of COMP450 at Rice University.",
     "author": "Gabriel Vacaliuc",
     "plugins": [
         "katex",
         "edit-link",
         "embed-pdf",
         "uml",
-        "underline"
+        "underline",
+        "nbinteract"
     ],
     "pluginsConfig": {
         "edit-link": {
@@ -18,6 +19,9 @@
         "uml": {
           "format": "png",
           "nailgun": false
+        },
+        "nbinteract": {
+            "auto_run": true
         }
     }
 }
