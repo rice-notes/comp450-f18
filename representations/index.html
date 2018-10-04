@@ -1,0 +1,511 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Representations · COMP450: Algorithmic Robotics</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Gabriel Vacaliuc">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="kinematics.html" />
+    
+    
+    <link rel="prev" href="../bug-algorithms/" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../bug-algorithms/">
+            
+                <a href="../bug-algorithms/">
+            
+                    
+                    Bug Algorithms
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Representations
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="kinematics.html">
+            
+                <a href="kinematics.html">
+            
+                    
+                    Kinematics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="configuration-spaces.md">
+            
+                <span>
+            
+                    
+                    Configuration Spaces
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../motion-planning/README.md">
+            
+                <span>
+            
+                    
+                    Motion Planning
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../motion-planning/sampling-based.md">
+            
+                <span>
+            
+                    
+                    Sampling Based Motion Planning
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../motion-planning/prm.md">
+            
+                <span>
+            
+                    
+                    Probabilistic Roadmap Planners
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../motion-planning/tree-based.html">
+            
+                <a href="../motion-planning/tree-based.html">
+            
+                    
+                    Tree-based Planners
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../motion-planning/analysis.md">
+            
+                <span>
+            
+                    
+                    Analysis of Planners
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../kinodynamic-planning/">
+            
+                <a href="../kinodynamic-planning/">
+            
+                    
+                    Kinodynamic Planning
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Representations</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="physical-object-representations">Physical Object Representations</h1>
+<h2 id="primitive-based">Primitive-Based</h2>
+<ul>
+<li>build up an object by primities, such as lines, points, etc...</li>
+<li>convex shapes can be made using linear primitives (lines / halfspaces)</li>
+</ul>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+%matplotlib inline
+
+plt.rcParams[<span class="hljs-string">&quot;figure.figsize&quot;</span>] = <span class="hljs-number">10</span>, <span class="hljs-number">6</span>
+plt.rcParams[<span class="hljs-string">&quot;figure.dpi&quot;</span>] = <span class="hljs-number">150</span>
+plt.rcParams[<span class="hljs-string">&quot;text.usetex&quot;</span>] = <span class="hljs-keyword">True</span>
+</code></pre>
+<pre><code class="lang-python">points = np.array([(<span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>), (<span class="hljs-number">-1</span>, <span class="hljs-number">1</span>), (<span class="hljs-number">1</span>, <span class="hljs-number">1</span>), (<span class="hljs-number">1</span>, <span class="hljs-number">-1</span>)])
+
+scale = <span class="hljs-keyword">lambda</span> A, c: A * c
+translate = <span class="hljs-keyword">lambda</span> A, x, y: A + np.array([(x, y)]*<span class="hljs-number">4</span>)
+
+
+objects = [
+    translate(scale(points, c), <span class="hljs-number">5</span> * x, <span class="hljs-number">5</span> * y)
+    <span class="hljs-keyword">for</span> c, (x, y) <span class="hljs-keyword">in</span> zip(range(<span class="hljs-number">1</span>, <span class="hljs-number">5</span>), itertools.product([<span class="hljs-number">-1</span>, <span class="hljs-number">1</span>], repeat=<span class="hljs-number">2</span>))
+]
+
+<span class="hljs-keyword">for</span> points <span class="hljs-keyword">in</span> objects:
+    <span class="hljs-keyword">for</span> pt <span class="hljs-keyword">in</span> range(<span class="hljs-number">4</span>):
+        x1, y1 = points[pt]
+        x2, y2 = points[(pt + <span class="hljs-number">1</span>) % <span class="hljs-number">4</span>]
+        plt.plot([x1, x2], [y1, y2], c=<span class="hljs-string">&quot;red&quot;</span>)
+        plt.scatter([x1], [y1], c=<span class="hljs-string">&quot;blue&quot;</span>)
+
+plt.title(<span class="hljs-string">&quot;Obstacles defined by points.&quot;</span>)
+</code></pre>
+<pre><code>Text(0.5,1,&apos;Obstacles defined by points.&apos;)
+</code></pre><p><img src="README_files/README_3_1.png" alt="png"></p>
+<pre><code class="lang-python">makeline = <span class="hljs-keyword">lambda</span> a, b, c: <span class="hljs-keyword">lambda</span> x: -(a / b) * x + c
+
+objects = [
+    makeline(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">-2</span>),
+    makeline(<span class="hljs-number">1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-2</span>),
+    makeline(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>),
+    makeline(<span class="hljs-number">1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">2</span>),
+]
+
+<span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> objects:
+    x = np.linspace(<span class="hljs-number">-2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1000</span>) 
+    y = line(x)
+    valid = np.logical_and.reduce([x &gt; <span class="hljs-number">-2</span>, x &lt; <span class="hljs-number">2</span>, y &gt; <span class="hljs-number">-2</span>, y &lt; <span class="hljs-number">2</span>])
+    plt.plot(x[valid], y[valid], c=<span class="hljs-string">&quot;red&quot;</span>)
+
+
+plt.title(<span class="hljs-string">&quot;Obstacle defined by lines&quot;</span>)
+</code></pre>
+<pre><code>Text(0.5,1,&apos;Obstacle defined by lines&apos;)
+</code></pre><p><img src="README_files/README_4_1.png" alt="png"></p>
+<h3 id="convexity">Convexity</h3>
+<p>A set $S$ is convex if for every $x, y \in S$, there exists 
+a point $\lambda x + (1 - \lambda) y \in S$.  In other words, you 
+must be able to move between two points without leaving $S$.</p>
+<h3 id="algebraic-sets">Algebraic Sets</h3>
+<p>A generalization of polygons / polyhedra, uses nonlinear primitives, e.g.
+circles, elipses, hyperbola, parabola, etc...</p>
+<h3 id="semi-algebraic-sets">Semi-Algebraic Sets</h3>
+<p>A set defined by the finite intersection / union of several algebraic sets.</p>
+<h2 id="polygon-soups">Polygon Soups</h2>
+<p>3D surfaces created by joining together several polygons.</p>
+<h2 id="sensor-based">Sensor-Based</h2>
+<p>Sensors are error-prone, and do not have a global view of the world.  From
+sensor data we&apos;ll capture depth data / pixel data, and construct a point cloud
+from the data we&apos;ve collected.  From there, we attempt to construct some sort
+of discrete grid that identifies free cells and obstacle cells.</p>
+<h1 id="rigid-body-transformations">Rigid Body Transformations</h1>
+<p>Defined by:</p>
+<ul>
+<li>each point in the body remains the same distance from each other</li>
+<li>points retain relative placement</li>
+</ul>
+<p>A rigid body in 2D can be described simply the position / rotation w.r.t. 
+a coordinate system.  Two types of transformations possible:</p>
+<ul>
+<li>rotation</li>
+<li>translation</li>
+</ul>
+<h2 id="rigid-body-rotations-2d">Rigid Body Rotations (2D)</h2>
+<p>We view this simply as a rotation matrix applied to a vector in
+$\mathbb{R}^2$.  For example, a rotation of $\theta$ would be</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>R</mi><mo>(</mo><mi>&#x3B8;</mi><mo>)</mo><mo>=</mo><mrow><mo fence="true">[</mo><mtable><mtr><mtd><mrow><mi>c</mi><mi>o</mi><mi>s</mi><mo>(</mo><mi>&#x3B8;</mi><mo>)</mo></mrow></mtd><mtd><mrow><mo>&#x2212;</mo><mi>s</mi><mi>i</mi><mi>n</mi><mo>(</mo><mi>&#x3B8;</mi><mo>)</mo></mrow></mtd></mtr><mtr><mtd><mrow><mi>s</mi><mi>i</mi><mi>n</mi><mo>(</mo><mi>&#x3B8;</mi><mo>)</mo></mrow></mtd><mtd><mrow><mi>c</mi><mi>o</mi><mi>s</mi><mo>(</mo><mi>&#x3B8;</mi><mo>)</mo></mrow></mtd></mtr></mtable><mo fence="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">
+R(\theta) = 
+\left[
+    \begin{matrix} 
+        cos(\theta) &amp; -sin(\theta) \\
+        sin(\theta) &amp; cos(\theta) 
+    \end{matrix}
+\right]
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.45em;"></span><span class="strut bottom" style="height:2.40003em;vertical-align:-0.95003em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord mathit" style="margin-right:0.00773em;">R</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.02778em;">&#x3B8;</span><span class="mclose">)</span><span class="mrel">=</span><span class="minner displaystyle textstyle uncramped"><span class="mopen style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size3">[</span></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist"><span style="top:-0.6099999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathit">c</span><span class="mord mathit">o</span><span class="mord mathit">s</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.02778em;">&#x3B8;</span><span class="mclose">)</span></span></span><span style="top:0.5900000000000003em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathit">s</span><span class="mord mathit">i</span><span class="mord mathit">n</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.02778em;">&#x3B8;</span><span class="mclose">)</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-0.6099999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord">&#x2212;</span><span class="mord mathit">s</span><span class="mord mathit">i</span><span class="mord mathit">n</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.02778em;">&#x3B8;</span><span class="mclose">)</span></span></span><span style="top:0.5900000000000003em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathit">c</span><span class="mord mathit">o</span><span class="mord mathit">s</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.02778em;">&#x3B8;</span><span class="mclose">)</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span><span class="mclose style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size3">]</span></span></span></span></span></span></span></p>
+<h2 id="general-rigid-body-motions-2d">General Rigid Body Motions (2D)</h2>
+<p>One way to represent rotations and transformation:
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><mrow><mi>u</mi></mrow><mo>&#x20D7;</mo></mover><mo>=</mo><mi>R</mi><mo>(</mo><mi>&#x3B8;</mi><mo>)</mo><mover accent="true"><mrow><mi>v</mi></mrow><mo>&#x20D7;</mo></mover><mo>+</mo><mover accent="true"><mrow><mi>t</mi></mrow><mo>&#x20D7;</mo></mover></mrow><annotation encoding="application/x-tex">
+\vec{u} = R(\theta)\vec{v} + \vec{t}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.89852em;"></span><span class="strut bottom" style="height:1.14852em;vertical-align:-0.25em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord accent"><span class="vlist"><span style="top:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord displaystyle textstyle cramped"><span class="mord mathit">u</span></span></span><span style="top:0em;margin-left:0.05556em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="accent-body accent-vec"><span>&#x20D7;</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.00773em;">R</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.02778em;">&#x3B8;</span><span class="mclose">)</span><span class="mord accent"><span class="vlist"><span style="top:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord displaystyle textstyle cramped"><span class="mord mathit" style="margin-right:0.03588em;">v</span></span></span><span style="top:0em;margin-left:0.05556em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="accent-body accent-vec"><span>&#x20D7;</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span><span class="mbin">+</span><span class="mord accent"><span class="vlist"><span style="top:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord displaystyle textstyle cramped"><span class="mord mathit">t</span></span></span><span style="top:-0.18407999999999997em;margin-left:0.16668em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="accent-body accent-vec"><span>&#x20D7;</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span></p>
+<p>Alternatively, we can use homogenous transformations for convenience like so:<br><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow><mo fence="true">[</mo><mtable><mtr><mtd><mrow><mi>R</mi><mo>(</mo><mi>&#x3B8;</mi><mo>)</mo></mrow></mtd><mtd><mrow><mover accent="true"><mrow><mi>t</mi></mrow><mo>&#x20D7;</mo></mover></mrow></mtd></mtr><mtr><mtd><mrow><mn>0</mn></mrow></mtd><mtd><mrow><mn>1</mn></mrow></mtd></mtr></mtable><mo fence="true">]</mo></mrow><mrow><mo fence="true">[</mo><mtable><mtr><mtd><mrow><mover accent="true"><mrow><mi>v</mi></mrow><mo>&#x20D7;</mo></mover></mrow></mtd></mtr><mtr><mtd><mrow><mn>1</mn></mrow></mtd></mtr></mtable><mo fence="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">
+\left[
+    \begin{matrix} 
+        R(\theta) &amp; \vec{t} \\
+        0 &amp; 1 
+    \end{matrix}
+\right]
+\left[
+    \begin{matrix} 
+        \vec{v} \\
+        1 
+    \end{matrix}
+\right]
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.47926em;"></span><span class="strut bottom" style="height:2.45852em;vertical-align:-0.97926em;"></span><span class="base displaystyle textstyle uncramped"><span class="minner displaystyle textstyle uncramped"><span class="mopen style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size3">[</span></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist"><span style="top:-0.58074em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathit" style="margin-right:0.00773em;">R</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.02778em;">&#x3B8;</span><span class="mclose">)</span></span></span><span style="top:0.6192599999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-0.58074em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord accent"><span class="vlist"><span style="top:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord displaystyle textstyle cramped"><span class="mord mathit">t</span></span></span><span style="top:-0.18407999999999997em;margin-left:0.16668em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="accent-body accent-vec"><span>&#x20D7;</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span><span style="top:0.6192599999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span><span class="mclose style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size3">]</span></span></span><span class="minner displaystyle textstyle uncramped"><span class="mopen style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size3">[</span></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist"><span style="top:-0.6099999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord accent"><span class="vlist"><span style="top:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord displaystyle textstyle cramped"><span class="mord mathit" style="margin-right:0.03588em;">v</span></span></span><span style="top:0em;margin-left:0.05556em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="accent-body accent-vec"><span>&#x20D7;</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span><span style="top:0.5900000000000003em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span><span class="mclose style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size3">]</span></span></span></span></span></span></span></p>
+<h3 id="properties-of-rotation-matrices">Properties of Rotation Matrices</h3>
+<p>Columns are mutually orthonormal, i.e. 
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>r</mi><mi>i</mi><mi>T</mi></msubsup><msub><mi>r</mi><mi>j</mi></msub><mo>=</mo><mrow><mo fence="true">{</mo><mtable><mtr><mtd><mrow><mn>1</mn></mrow></mtd><mtd><mrow><mi>i</mi><mo>=</mo><mi>j</mi></mrow></mtd></mtr><mtr><mtd><mrow><mn>0</mn></mrow></mtd><mtd><mrow><mi>i</mi><mo>&#x2260;</mo><mi>j</mi></mrow></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">
+r_i^Tr_j = \begin{cases} 1 &amp; i = j \\ 0 &amp; i \ne j \end{cases}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.75em;"></span><span class="strut bottom" style="height:3.0000299999999998em;vertical-align:-1.25003em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist"><span style="top:0.247em;margin-left:-0.02778em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight">i</span></span></span><span style="top:-0.4129999999999999em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord mathit mtight" style="margin-right:0.13889em;">T</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mord"><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.02778em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight" style="margin-right:0.05724em;">j</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">=</span><span class="minner displaystyle textstyle uncramped"><span class="mopen style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size4">{</span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist"><span style="top:-0.6819999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span style="top:0.7579999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span><span class="arraycolsep" style="width:1em;"></span><span class="col-align-l"><span class="vlist"><span style="top:-0.6819999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathit">i</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span><span style="top:0.7579999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathit">i</span><span class="mrel">&#x2260;</span><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span><span class="mclose sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span></span></span></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>R</mi><mi>T</mi></msup><mi>R</mi><mo>=</mo><mi>R</mi><msup><mi>R</mi><mi>T</mi></msup><mo>=</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">
+R^TR = RR^T = I
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8913309999999999em;"></span><span class="strut bottom" style="height:0.8913309999999999em;vertical-align:0em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist"><span style="top:-0.413em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord mathit mtight" style="margin-right:0.13889em;">T</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mord mathit" style="margin-right:0.00773em;">R</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.00773em;">R</span><span class="mord"><span class="mord mathit" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist"><span style="top:-0.413em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord mathit mtight" style="margin-right:0.13889em;">T</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.07847em;">I</span></span></span></span></span></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../bug-algorithms/" class="navigation navigation-prev " aria-label="Previous page: Bug Algorithms">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="kinematics.html" class="navigation navigation-next " aria-label="Next page: Kinematics">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Representations","level":"1.3","depth":1,"next":{"title":"Kinematics","level":"1.3.1","depth":2,"path":"representations/kinematics.md","ref":"./representations/kinematics.md","articles":[]},"previous":{"title":"Bug Algorithms","level":"1.2","depth":1,"path":"bug-algorithms/README.md","ref":"./bug-algorithms/README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex","edit-link","embed-pdf","uml","underline","nbinteract"],"root":"src","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"nbinteract":{"baseUrl":"https://mybinder.org","provider":"gh","spec":"SamLau95/nbinteract-image/master","auto_run":true},"underline":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"uml":{"format":"png","nailgun":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"edit","base":"https://github.com/rice-notes/comp321-sp18/tree/master/src"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"embed-pdf":{}},"theme":"default","author":"Gabriel Vacaliuc","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"COMP450: Algorithmic Robotics","gitbook":"*","description":"Notes from the Fall 2018 offering of COMP450 at Rice University."},"file":{"path":"representations/README.md","mtime":"2018-10-04T19:15:04.429Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-04T19:17:09.051Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-nbinteract/index.bundle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-nbinteract/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

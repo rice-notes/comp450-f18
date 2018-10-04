@@ -1,0 +1,452 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Kinematics · COMP450: Algorithmic Robotics</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Gabriel Vacaliuc">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="configuration-spaces.md" />
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../bug-algorithms/">
+            
+                <a href="../bug-algorithms/">
+            
+                    
+                    Bug Algorithms
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Representations
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.3.1" data-path="kinematics.html">
+            
+                <a href="kinematics.html">
+            
+                    
+                    Kinematics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="configuration-spaces.md">
+            
+                <span>
+            
+                    
+                    Configuration Spaces
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../motion-planning/README.md">
+            
+                <span>
+            
+                    
+                    Motion Planning
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../motion-planning/sampling-based.md">
+            
+                <span>
+            
+                    
+                    Sampling Based Motion Planning
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../motion-planning/prm.md">
+            
+                <span>
+            
+                    
+                    Probabilistic Roadmap Planners
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../motion-planning/tree-based.html">
+            
+                <a href="../motion-planning/tree-based.html">
+            
+                    
+                    Tree-based Planners
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../motion-planning/analysis.md">
+            
+                <span>
+            
+                    
+                    Analysis of Planners
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../kinodynamic-planning/">
+            
+                <a href="../kinodynamic-planning/">
+            
+                    
+                    Kinodynamic Planning
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Kinematics</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="kinematics">Kinematics</h1>
+<p>Here we look at the relationship between the configuration and
+workspaces of a system.  There are two types of kinematics we&apos;re
+interested in:  </p>
+<ul>
+<li>forward kinematics: postion of end effector given configuration point</li>
+<li>inverse kinematics: configuration point given position of end effector</li>
+</ul>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+%matplotlib widget
+</code></pre>
+<pre><code class="lang-python">plt.rcParams[<span class="hljs-string">&quot;figure.figsize&quot;</span>] = <span class="hljs-number">10</span>, <span class="hljs-number">6</span>
+plt.rcParams[<span class="hljs-string">&quot;figure.dpi&quot;</span>] = <span class="hljs-number">150</span>
+plt.rcParams[<span class="hljs-string">&quot;text.usetex&quot;</span>] = <span class="hljs-keyword">True</span>
+</code></pre>
+<pre><code class="lang-python"><span class="hljs-keyword">from</span> ipywidgets <span class="hljs-keyword">import</span> interact, interactive, fixed, interact_manual
+<span class="hljs-keyword">import</span> ipywidgets <span class="hljs-keyword">as</span> widgets
+</code></pre>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_rotation_matrix</span><span class="hljs-params">(angle)</span>:</span>
+    rad = np.deg2rad(angle)
+    <span class="hljs-keyword">return</span> np.array([[np.cos(rad), -np.sin(rad)], [np.sin(rad), np.cos(rad)]])
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_pivot_matrix</span><span class="hljs-params">(angle, pt)</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot;
+    Rotates {point} {angle} degrees around the point (x, 0).
+    &quot;&quot;&quot;</span>
+
+    rot = np.zeros((<span class="hljs-number">3</span>, <span class="hljs-number">3</span>))
+    rad = np.deg2rad(angle)
+
+    rot_matrix = get_rotation_matrix(angle)
+    rot[:<span class="hljs-number">2</span>, :<span class="hljs-number">2</span>] = rot_matrix
+    rot[:<span class="hljs-number">2</span>, <span class="hljs-number">2</span>] = -(rot_matrix @ pt) + pt
+
+    <span class="hljs-keyword">return</span> rot
+</code></pre>
+<h2 id="planar-manipulator">Planar Manipulator</h2>
+<p><img src="planar-manipulator.png" alt="planar manipulator"></p>
+<pre><code class="lang-python"><span class="hljs-meta">@interact(theta1=(0,45,5), theta2=(0,45,5), theta3=(0,45,5))</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">plot_planar_manipulator</span><span class="hljs-params">(theta1=<span class="hljs-number">10</span>, theta2=<span class="hljs-number">10</span>, theta3=<span class="hljs-number">10</span>)</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot;
+    Plots a 3 arm planar manipulator.
+    &quot;&quot;&quot;</span>
+
+    pt_color = <span class="hljs-string">&quot;red&quot;</span>
+    arm_color = <span class="hljs-string">&quot;black&quot;</span>
+
+    arms=[<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>] 
+    points = [np.zeros(<span class="hljs-number">3</span>)]
+    <span class="hljs-keyword">for</span> arm <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, <span class="hljs-number">4</span>):
+        point = np.array([sum(arms[:arm]), <span class="hljs-number">0</span> , <span class="hljs-number">1</span>])
+        <span class="hljs-keyword">for</span> angle, pivotx <span class="hljs-keyword">in</span> list(zip([theta1, theta2 / <span class="hljs-number">2</span>, theta3 / <span class="hljs-number">3</span>], [<span class="hljs-number">0</span>, sum(arms[<span class="hljs-number">1</span>:<span class="hljs-number">2</span>]), sum(arms[:<span class="hljs-number">2</span>])]))[:arm]:
+            point = get_pivot_matrix(angle, np.array([pivotx, <span class="hljs-number">0</span>])) @ point
+        plt.scatter(point[<span class="hljs-number">0</span>], point[<span class="hljs-number">1</span>], c=pt_color)
+        points.append(point)
+
+    plt.xlim((<span class="hljs-number">0</span>, <span class="hljs-number">3</span>))
+    plt.ylim((<span class="hljs-number">0</span>, <span class="hljs-number">3</span>))
+
+    <span class="hljs-keyword">for</span> pt <span class="hljs-keyword">in</span> range(<span class="hljs-number">3</span>):
+        plt.plot([points[pt][<span class="hljs-number">0</span>], points[(pt+<span class="hljs-number">1</span>)][<span class="hljs-number">0</span>]], [points[pt][<span class="hljs-number">1</span>], points[(pt+<span class="hljs-number">1</span>)][<span class="hljs-number">1</span>]], c=arm_color)
+</code></pre>
+<pre><code>interactive(children=(IntSlider(value=10, description=&apos;theta1&apos;, max=45, step=5), IntSlider(value=10, descripti&#x2026;
+</code></pre>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Representations">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="configuration-spaces.md" class="navigation navigation-next " aria-label="Next page: Configuration Spaces">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Kinematics","level":"1.3.1","depth":2,"next":{"title":"Configuration Spaces","level":"1.3.2","depth":2,"path":"representations/configuration-spaces.md","ref":"./representations/configuration-spaces.md","articles":[]},"previous":{"title":"Representations","level":"1.3","depth":1,"path":"representations/README.md","ref":"./representations/README.md","articles":[{"title":"Kinematics","level":"1.3.1","depth":2,"path":"representations/kinematics.md","ref":"./representations/kinematics.md","articles":[]},{"title":"Configuration Spaces","level":"1.3.2","depth":2,"path":"representations/configuration-spaces.md","ref":"./representations/configuration-spaces.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["katex","edit-link","embed-pdf","uml","underline","nbinteract"],"root":"src","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"nbinteract":{"baseUrl":"https://mybinder.org","provider":"gh","spec":"SamLau95/nbinteract-image/master","auto_run":true},"underline":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"uml":{"format":"png","nailgun":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"edit","base":"https://github.com/rice-notes/comp321-sp18/tree/master/src"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"embed-pdf":{}},"theme":"default","author":"Gabriel Vacaliuc","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"COMP450: Algorithmic Robotics","gitbook":"*","description":"Notes from the Fall 2018 offering of COMP450 at Rice University."},"file":{"path":"representations/kinematics.md","mtime":"2018-10-04T19:15:04.429Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-04T19:17:09.051Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-nbinteract/index.bundle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-nbinteract/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
